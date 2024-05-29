@@ -49,6 +49,43 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
+---
+# Testing
+````md differ
+```ts
+function createUser(db: Database, user: User) {
+  if (user != null) {
+    if (db.isConnected()) {
+      return db.create(user)
+    } else {
+      throw new Error("database not connected")
+    }
+  } else {
+    throw new Error("user is undefined")
+  }
+}
+```
+
+```ts
+function createUser(db: Database, user: User) {
+  if (user != null) {
+    if (db.isConnected()) {
+      if (!db.hasEntry(user.email)) {
+        return db.create(user)
+      } else {
+        throw new Error("user already exists")
+      }
+    } else {
+      throw new Error("database not connected")
+    }
+  } else {
+    throw new Error("user is undefined")
+  }
+}
+```
+````
+
+---
 transition: fade-out
 ---
 

@@ -23,6 +23,7 @@ import { escapeVueInCode } from '../syntax/transform/utils'
 
 import {
   transformCodeWrapper,
+  transformDiffer,
   transformKaTexWrapper,
   transformMagicMove,
   transformMermaid,
@@ -186,6 +187,7 @@ export function applyMarkdownTransform(
     transformKaTexWrapper,
     transformPageCSS,
     transformSlotSugar,
+    transformDiffer,
   ]
 
   for (const transformer of transformers) {
